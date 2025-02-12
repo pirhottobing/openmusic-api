@@ -1,6 +1,6 @@
-const { nanoid } = require("nanoid");
-const InvariantError = require("../../exceptions/InvariantError");
-const NotFoundError = require("../../exceptions/NotFoundError");
+const { nanoid } = require('nanoid');
+const InvariantError = require('../../exceptions/InvariantError');
+const NotFoundError = require('../../exceptions/NotFoundError');
 
 class AlbumsService {
   constructor() {
@@ -13,7 +13,7 @@ class AlbumsService {
     // const updateAt = createdAt;
 
     const newAlbum = {
-      name, year, id
+      name, year, id,
     };
 
     this._albums.push(newAlbum);
@@ -35,7 +35,7 @@ class AlbumsService {
     return album;
   }
 
-  editAlbumById( id, { name, year }) {
+  editAlbumById(id, { name, year }) {
     const index = this._albums.findIndex((album) => album.id === id);
 
     if (index === -1) {
