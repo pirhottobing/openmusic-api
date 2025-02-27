@@ -26,4 +26,13 @@ const mapSongs = ({
   albumId,
 });
 
-module.exports = { mapAlbums, mapSongs };
+const UserMap = ({
+  id, username, password, fullname,
+}) => ({
+  id,
+  username,
+  password,
+  fullname,
+});
+
+module.exports = { mapAlbums, mapSongs, UserMap };

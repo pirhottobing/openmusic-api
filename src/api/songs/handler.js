@@ -31,46 +31,55 @@ class SongsHandler {
     return response;
   }
 
-  async getSongsHandler(request) {
+  async getSongsHandler(request, h) {
     const songs = await this._service.getSongs(request.query);
-    return {
+    const response = h.response({
       status: 'success',
       data: {
         songs,
       },
-    };
+    });
+    response.code(200);
+    return response;
   }
 
-  async getSongByIdHandler(request) {
+  async getSongByIdHandler(request, h) {
     const { id } = request.params;
     const song = await this._service.getSongById(id);
-    return {
+    const response = h.response({
       status: 'success',
       data: {
         song,
       },
-    };
+    });
+    response.code(200);
+    return response;
   }
 
-  async putSongByIdHandler(request) {
+  async putSongByIdHandler(request, h) {
     this._validator.validateSongPayload(request.payload);
     const { id } = request.params;
 
     await this._service.editSongById(id, request.payload);
 
-    return {
+    const response = h.response({
       status: 'success',
-      message: 'Lagu berhasil diperbarui',
-    };
+      message: 'Lagu berhasil diperbaharui',
+    });
+    response.code(200);
+    return response;
   }
 
-  async deleteSongByIdHandler(request) {
+  async deleteSongByIdHandler(request, h) {
     const { id } = request.params;
     await this._service.deleteSongById(id);
-    return {
+
+    const response = h.response({
       status: 'success',
       message: 'Lagu berhasil dihapus',
-    };
+    });
+    response.code(200);
+    return response;
   }
 }
 
